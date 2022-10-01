@@ -1,31 +1,21 @@
-const url = "https://api.covid19api.com/dayone/country/brazil";
-
-
-
+let url = 'https://api.covid19api.com/dayone/country/brazil';
 
 function getJSON(url, callback) {
-  var xhr = new XMLHttpRequest();
+  let xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
   xhr.responseType = 'json';
   xhr.onload = function () {
-    if (xhr.status === 200) {
-      console.log('Dados Rebidos com sucesso!')
+    if (xhr.status >= 200) {
       callback(xhr.response);
+    } else {
+      console.log("erro:" + xhr.status)
     }
-    else {
-      console.log('Problema ao conectar com a API: ' + xhr.status);
-    }
-
-    xhr.send();
   }
-
-  getJSON(url, function (data) {
-
-  })
-
-  getJSON(url, function (data) {
-    for (var i = 0; i < data.length; i++) {
-      console.log(data[i]);
-    }
-  })
+  xhr.send();
 }
+
+function retornaDados(data) {
+  console.log(data[0]);
+}
+
+getJSON(url, retornaDados);
