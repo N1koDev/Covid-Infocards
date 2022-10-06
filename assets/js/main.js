@@ -18,12 +18,20 @@ function getJSON(url) {
 
 let cartoes = []
 function retornaDados(data) {
-  data.forEach(
-    element => {
-      saida = "Casos ativos:" + element.Active + "<BR>Mortes:" + element.Deaths + "<BR>Casos confirmados:" + element.Confirmed;
-      cartoes.push(saida + "<BR>")
-    });
+  for (let index = 0; index < data.length; index += 30) {
+    console.log(data[index])
+    let dia = new Date(data[index].Date);
+    mortes = data[index].Deaths;
+    diaEvento = dia.getDate() + "/" + dia.getMonth() + "/" + dia.getFullYear();
+    casos = data[index].Confirmed;
+    saida = `Mortes:${mortes} data:${diaEvento} Casos confirmados:${casos} <BR> <BR>`;
+    cartoes.push(saida)
+
+  };
   html.innerHTML = cartoes;
 }
+
+
+
 
 getJSON(url, retornaDados); //puxar com um botão
