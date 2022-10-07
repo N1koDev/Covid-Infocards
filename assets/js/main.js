@@ -1,37 +1,44 @@
-let saida;
 let url = 'https://api.covid19api.com/dayone/country/brazil';
-let html = document.getElementById("descricao");
 
-function getJSON(url) {
-  let xhr = new XMLHttpRequest();
-  xhr.open('GET', url, true);
+function callAPI(url, callback) {
+  var xhr = new XMLHttpRequest();
   xhr.responseType = 'json';
-  xhr.onload = function () {
-    if (xhr.status >= 200) {
-      retornaDados(xhr.response);
-    } else {
-      console.log("erro:" + xhr.status)
+  xhr.open('GET', url, true);
+  xhr.onload = function(){
+    if(xhr.status === 200){
+      callback(xhr.status, xhr.response);
+    }
+    else {
+      alert('Problemas ao conectar com o servidor!')
     }
   }
   xhr.send();
 }
 
-let cartoes = []
-function retornaDados(data) {
-  for (let index = 0; index < data.length; index += 30) {
-    console.log(data[index])
-    let dia = new Date(data[index].Date);
-    mortes = data[index].Deaths;
-    diaEvento = dia.getDate() + "/" + dia.getMonth() + "/" + dia.getFullYear();
-    casos = data[index].Confirmed;
-    saida = `Mortes:${mortes} data:${diaEvento} Casos confirmados:${casos} <BR> <BR>`;
-    cartoes.push(saida)
+const dataAPI = document.querySelector('[data-info="data"]')
+const casosAPI = document.querySelector('[data-info="casos"]')
+const deathsAPI = document.querySelector('[data-info="deaths"]')
 
-  };
-  html.innerHTML = cartoes;
-}
+index = 952
+
+callAPI(url, function(status, data){
+  console.log(data)
+  console.log(data[index])
+
+  let date = data[index].Date;
+
+  let dia = new Date(data[index].Date);
+  console.log(data[index].Date)
+  console.log(dia)
+
+  let mortes = data[index].Deaths;
+
+  let diaEvento = dia.getDate() + "/" + dia.getMonth() + "/" + dia.getFullYear();
+  let casos = data[index].Confirmed;
+
+  dataAPI.textContent = diaEvento;
+  casosAPI.textContent = casos;
+  deathsAPI.textContent = mortes;
 
 
-
-
-getJSON(url, retornaDados); //puxar com um botão
+});

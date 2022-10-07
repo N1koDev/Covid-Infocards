@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/normalize.css">
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -14,16 +16,45 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Evolução casos de covid no Brasil</h1>
-    <article>
-      <p id="descricao">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, error,
-        consequatur, tempore iusto deleniti voluptatibus sequi reiciendis
-        provident aspernatur magnam id ducimus quasi nihil architecto asperiores
-        officiis iste et? Voluptatum.
-      </p>
-      <img src="" alt="" />
-    </article>
+
+    <header>
+      <h1>Covid InfoCards</h1>
+      <p>Evolução casos de covid no Brasil</p>
+    </header>
+
+    <div class="container">
+
+      <section class="status">
+        <div class="status__icon--data">
+          <img src="" alt="">
+        </div>
+        <div class="info">
+          <span class="info__total--data" data-info="data"></span>
+            <h2 class="info__label">data</h2>
+        </div>
+      </section>
+
+      <section class="status">
+        <div class="status__icon--confirmed">
+          <img src="" alt="">
+        </div>
+        <div class="info">
+            <span class="info__total--confirmed" data-info="casos"></span>
+            <h2 class="info__label">confirmados</h2>
+        </div>
+      </section>
+
+      <section class="status">
+        <div class="status__icon--deaths">
+          <img src="" alt="">
+        </div>
+        <div class="info">
+          <span class="info__total--deaths" data-info="deaths"></span>
+            <h2 class="info__label">mortes</h2>
+        </div>
+      </section>
+
+    </div>
+
   </body>
   <script src="./assets/js/main.js"></script>
-</html>
