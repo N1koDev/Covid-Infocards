@@ -1,0 +1,95 @@
+/* variáveis */
+:root {
+  --pageBackground: #f0f0f0;
+  --cardBackground: #fff;
+  --fontColor: #393939;
+  --shadows: rgba{57, 57, 57, 0.2}
+}
+
+/* fontes  */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,500;1,500&family=Roboto&family=Secular+One&family=Ubuntu&display=swap');
+
+/* reset  */
+html,body{
+    height: 100%;
+    margin: 0;
+    display:block;
+}
+
+.title{
+    text-align: center;
+}
+
+
+.status {
+    min-height: 10rem;
+    display: flex;
+    align-items: center;
+
+}
+
+
+
+.status__icon {
+    font-size: 3.6rem;
+    margin-right: 0.8rem;
+}
+
+.status__icon,img{
+    height: 100px;
+    width: 160px;
+}
+
+section {
+    background-color:darksalmon;
+    transition:--transition;
+    box-shadow: var(--shadow-card);
+    padding: 1.6rem;
+    border-radius: 3rem;
+    border: solid;
+    border-color: black;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+/* estilos  basicos */
+*{
+    font-family: 'Roboto',sans-serif;
+    color: var(--fontColor);
+}
+
+body{
+    background-color: var(--pageBackground);
+    font-size: 20pt;
+}
+
+article{
+    margin: 20px;
+    box-shadow: 0 0 10px var(--shadows);
+    border-radius: 10px;
+    background-color: var(--cardBackground);
+    padding: 20px;
+}
+
+img{
+    width: 50%;
+}
+
+
+/* web e outros tamanhos  */
+@media only screen and (min-width: 920px) {
+    *{
+        font-size: 14pt;
+    }
+
+  /*  body{
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+    }*/
+
+    article{
+        width: 30%;
+    }
+    
+}
